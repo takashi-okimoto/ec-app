@@ -20,7 +20,7 @@ const ImageArea = (props) => {
     if (!ret) {
       return false
     } else {
-      const newImages = props.images.filter(image => image.id !== id);
+      const newImages = props.images.filter(image => image.id !== id)
       props.setImages(newImages);
       return storage.ref('images').child(id).delete()
     }
