@@ -29,12 +29,14 @@ export const fetchProducts = () => {
   }
 }
 
-export const saveProduct = (id, name, description, price, images) => {
+export const saveProduct = (id, name, description, category, gender, price, images) => {
   return async (dispatch) => {
     const timestamp = FirebaseTimestamp.now()
 
     const data = {
+      category: category,
       description: description,
+      gender: gender,
       name: name,
       price: parseInt(price, 10),
       images: images,

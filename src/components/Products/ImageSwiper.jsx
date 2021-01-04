@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Swiper from 'react-id-swiper';
+import Swiper from "react-id-swiper";
 import NoImage from "../../assets/img/src/no_image.png";
 import 'swiper/css/swiper.css';
 
