@@ -1,6 +1,6 @@
 import React, {useCallback, useEffect, useState} from 'react';
 import { useDispatch } from 'react-redux';
-import ImageArea from '../components/Products/ImageArea';
+import {ImageArea, SetSizeArea} from '../components/Products';
 import {PrimaryButton, SelectBox, TextInput} from "../components/UIkit";
 import { db } from '../firebase/index';
 import {saveProduct} from "../reducks/products/operations";
@@ -18,7 +18,8 @@ const ProductEdit = () => {
         [category, setCategory] = useState(""),
         [gender, setGender] = useState(""),
         [images, setImages] = useState([]),
-        [price, setPrice] = useState("");
+        [price, setPrice] = useState(""),
+        [sizes, setSizes] = useState([]);
 
   const inputName = useCallback((event) => {
     setName(event.target.value)
@@ -52,7 +53,10 @@ const ProductEdit = () => {
           setImages(data.images);
           setName(data.name);
           setDescription(data.description);
+          setCategory(data.category);
+          setGender(data.gender);
           setPrice(data.price);
+          setSizes(data.sizes);
         })
     }
   }, [id]);
@@ -80,11 +84,13 @@ const ProductEdit = () => {
           fullWidth={true} label={"価格"} multiline={false} required={true}
           onChange={inputPrice} rows={1} value={price} type={"number"}
         />
-        <div className="module-spacer--medium" />
+        <div className="module-spacer--small" />
+        <SetSizeArea sizes={sizes} setSizes={setSizes} />
+        <div className="module-spacer--small" />
         <div className="center">
           <PrimaryButton
             label={"商品情報を保存"}
-            onClick={() => dispatch(saveProduct(id, name, description, category, gender, price, images))}
+            onClick={() => dispatch(saveProduct(id, name, description, category, gender, price, images, sizes))}
           />
         </div>
       </div>
