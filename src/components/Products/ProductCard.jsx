@@ -10,7 +10,7 @@ import {useDispatch} from "react-redux";
 import IconButton from '@material-ui/core/IconButton';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
-import MOreVertIcon from '@material-ui/icons/MoreVert';
+import MoreVertIcon from '@material-ui/icons/MoreVert';
 import {deleteProduct} from "../../reducks/products/operations";
 
 const useStyles = makeStyles((theme) => ({
@@ -31,6 +31,10 @@ const useStyles = makeStyles((theme) => ({
     '&:last-child': {
       paddingBottom: 16
     }
+  },
+  icon: {
+    marginRight: 0,
+    marginLeft: 'auto'
   },
   media: {
     height: 0,
@@ -76,8 +80,8 @@ const ProductCard = (props) => {
           ¥{price}
         </Typography>
         </div>
-        <IconButton onClick={handleClick}>
-          <MOreVertIcon />
+        <IconButton className={classes.icon} onClick={handleClick}>
+          <MoreVertIcon />
         </IconButton>
         <Menu
           anchorEl={anchorEl}
